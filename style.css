@@ -1,0 +1,262 @@
+/* ═══════════════════════════════════════
+   XtermChat Docs — style.css
+   Light theme, matches web chat UI
+   ═══════════════════════════════════════ */
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* ── Sidebar ── */
+#sidebar {
+  transform: translateX(-100%);
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+}
+@media (min-width: 1024px) {
+  #sidebar { transform: translateX(0); }
+}
+
+/* ── Overlay ── */
+#overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 35;
+  backdrop-filter: blur(2px);
+}
+#overlay.show { display: block; }
+
+/* ── Nav links ── */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #64748b;
+  text-decoration: none;
+  transition: all .15s;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.nav-link:hover  { background: #f1f5f9; color: #1e293b; }
+.nav-link.active {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+  border-color: #bfdbfe;
+}
+.nav-num {
+  font-size: 9px;
+  color: #cbd5e1;
+  min-width: 16px;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+}
+.nav-link.active .nav-num { color: #93c5fd; }
+
+/* ══════════════════════════════════════
+   MARKDOWN RENDERED CONTENT
+   ══════════════════════════════════════ */
+.prose-doc { animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Headings ── */
+.prose-doc h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+.prose-doc h1 + p { color: #64748b; font-size: .95rem; margin-bottom: 24px; }
+
+.prose-doc h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 32px 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.prose-doc h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .85rem;
+  font-weight: 600;
+  color: #334155;
+  margin: 22px 0 8px;
+}
+
+/* ── Paragraphs ── */
+.prose-doc p {
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 14px;
+  font-size: .925rem;
+}
+.prose-doc strong { color: #1e293b; font-weight: 600; }
+.prose-doc em     { color: #475569; }
+
+/* ── Lists ── */
+.prose-doc ul, .prose-doc ol {
+  color: #475569;
+  font-size: .925rem;
+  line-height: 1.75;
+  margin: 10px 0 16px;
+  padding-left: 20px;
+}
+.prose-doc li { margin-bottom: 4px; }
+.prose-doc li strong { color: #1e293b; }
+
+/* ── Links ── */
+.prose-doc a { color: #2563eb; text-decoration: none; }
+.prose-doc a:hover { text-decoration: underline; }
+
+/* ── Inline code ── */
+.prose-doc :not(pre) > code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem;
+  background: #f1f5f9;
+  color: #2563eb;
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ── Code blocks ── */
+.prose-doc pre {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px 18px;
+  overflow-x: auto;
+  margin: 14px 0;
+  position: relative;
+  border: none;
+}
+.prose-doc pre code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem;
+  color: #cbd5e1;
+  line-height: 1.75;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* ── Tables ── */
+.prose-doc table {
+  width: 100%;
+  font-size: .85rem;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  margin: 14px 0;
+}
+.prose-doc thead tr { background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+.prose-doc th {
+  text-align: left;
+  padding: 10px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #94a3b8;
+}
+.prose-doc td {
+  padding: 10px 14px;
+  color: #475569;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+}
+.prose-doc tbody tr:last-child td { border-bottom: none; }
+.prose-doc tbody tr:hover { background: #fafafa; }
+.prose-doc td code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .75rem;
+  background: #f1f5f9;
+  color: #2563eb;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ── Blockquotes (used for tips/warnings) ── */
+.prose-doc blockquote {
+  margin: 14px 0;
+  padding: 12px 16px;
+  border-left: none;
+  border-radius: 10px;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+.prose-doc blockquote p { margin: 0; font-size: .875rem; }
+
+/* Default blockquote — info */
+.prose-doc blockquote {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+}
+.prose-doc blockquote p { color: #1d4ed8; }
+
+/* Warning — starts with ⚠️ */
+.prose-doc blockquote.warn {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+.prose-doc blockquote.warn p { color: #92400e; }
+
+/* Tip — starts with 💡 */
+.prose-doc blockquote.tip {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+.prose-doc blockquote.tip p { color: #166534; }
+
+/* ── Horizontal rule ── */
+.prose-doc hr {
+  border: none;
+  border-top: 1px solid #f1f5f9;
+  margin: 24px 0;
+}
+
+/* ── Copy button on code blocks ── */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: #334155;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all .15s;
+  user-select: none;
+  line-height: 1.4;
+}
+.copy-btn:hover  { color: #f1f5f9; border-color: #64748b; }
+.copy-btn.copied { color: #4ade80; border-color: #4ade80; }
