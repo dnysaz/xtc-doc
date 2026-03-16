@@ -13,6 +13,7 @@ const MD_DIR = 'markdown/';
 // Hardcoded file list — edit this when you add/remove files.
 // The order here determines sidebar order.
 const FILES = [
+  '0_home.md',
   '1_introduction.md',
   '2_how_it_works.md',
   '3_requirements.md',
